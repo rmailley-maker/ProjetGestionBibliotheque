@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="jakarta.faces.core"
+      xmlns:h="jakarta.faces.html">
+<f:view>
+    <h:head><h:outputStylesheet library="css" name="Styles.css"/></h:head>
+    <h:body>
+        <h:messages globalOnly="false" />
+        <h1 style="text-align: center;">Emprunter un livre</h1>
+        <p/>
+        <div>
+            <h:form class="formulaire-centre">
+
+                <div class="form-row">
+                    <h:outputLabel for="numLec">Numéro du lecteur :</h:outputLabel>
+                    <h:inputText id="numLec" value="#{beanEmprunt.numeroLecteur}" required="true" requiredMessage=" le titre">
+                        <f:validateLongRange minimum="1" maximum="20"/>
+                    </h:inputText>
+                    <h:message for="numLec" style="color:red;"/>
+                </div>
+
+                <div class="form-row">
+                    <h:outputLabel for="numLiv">Numéro du livre :</h:outputLabel>
+                    <h:inputText id="numLiv" value="#{beanEmprunt.numeroLivre}" />
+                    <h:message for="numLiv" style="color:red;"/>
+                </div>
+                <h:commandButton type="submit" action="#{beanEmprunt.emprunte()}" value="Emprunter" class="ui-button" />
+                <h:commandButton value="Retour au menu principal" action="Menu_html.xhtml" immediate="true" class="ui-button"/>
+            </h:form>
+        </div>
+    </h:body>
+</f:view>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="jakarta.faces.core"
+      xmlns:h="jakarta.faces.html">
+<f:view>
+    <h:head><h:outputStylesheet library="css" name="Styles.css"/></h:head>
+    <h:body>
+
+        <h1 style="text-align: center;">Rendre un livre</h1>
+        <p/>
+        <div class="formulaire-centre">
+        <h:form class="formulaire-centre">
+
+                <div class="form-row">
+                    <h:outputLabel for="numLec">Numéro du lecteur :</h:outputLabel>
+                    <h:inputText id="numLec" value="#{beanEmprunt.numeroLecteur}" requiredMessage="Veuillez noter un numéro de lecteur">
+                        <f:validateDoubleRange minimum="1" maximum="100" />
+                    </h:inputText>
+                    <h:message for="numLec" style="color:red;"/>
+                </div>
+                <h:commandButton type="submit" action="#{beanEmprunt.voirEmprunts()}" value="Liste des emprunts en cours" class="ui-button"/>
+                <h:commandButton value="Retour au menu principal" action="Menu_html.xhtml" immediate="true" class="ui-button"/>
+            </h:form>
+        </div>
+        <h:messages globalOnly="false" style="color:red"/>
+    </h:body>
+</f:view>
+</html>

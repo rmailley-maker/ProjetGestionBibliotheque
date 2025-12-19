@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="jakarta.faces.core"
+      xmlns:h="jakarta.faces.html">
+<f:view>
+    <h:head>
+        <h:outputStylesheet library="css" name="Styles.css"/>
+    </h:head>
+    <h:body>
+        <h:outputText styleClass="h1-style"  value="Liste des emprunts en cours de #{beanEmprunt.nomLecteur}."/>
+        <p/>
+        <h:dataTable value="#{beanEmprunt.tousLesEmprunts}" var="emprunt" border="1" class="tableauStyle" headerClass="headerStyle">
+            <h:column>
+                <f:facet name="header">Titre du livre</f:facet>
+                #{emprunt.livre.titre}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Date Emprunt</f:facet>
+                #{emprunt.date_debut}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Action</f:facet>
+                <h:form>
+                    <h:commandButton type="submit" action="#{beanEmprunt.rendre(emprunt)}" value="Rendre" class="ui-button"/>
+                </h:form>
+            </h:column>
+        </h:dataTable>
+
+        <h:form>
+            <div class="form-submit">
+                <h:commandButton value="Retour au menu principal" action="Menu_html.xhtml" immediate="true"/>
+            </div>
+        </h:form>
+    </h:body>
+</f:view>
+</html>
